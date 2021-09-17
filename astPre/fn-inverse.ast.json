@@ -1,0 +1,236 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "BlockStatement",
+      "path": {
+        "type": "PathExpression",
+        "data": false,
+        "depth": 0,
+        "parts": [
+          "if"
+        ],
+        "original": "if",
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 3
+          },
+          "end": {
+            "line": 1,
+            "column": 5
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "PathExpression",
+          "data": false,
+          "depth": 0,
+          "parts": [
+            "left"
+          ],
+          "original": "left",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 6
+            },
+            "end": {
+              "line": 1,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "program": {
+        "type": "Program",
+        "body": [
+          {
+            "type": "ContentStatement",
+            "original": "left",
+            "value": "left",
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 12
+              },
+              "end": {
+                "line": 1,
+                "column": 16
+              }
+            }
+          }
+        ],
+        "strip": {},
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 12
+          },
+          "end": {
+            "line": 1,
+            "column": 16
+          }
+        }
+      },
+      "inverse": {
+        "type": "Program",
+        "body": [
+          {
+            "type": "BlockStatement",
+            "path": {
+              "type": "PathExpression",
+              "data": false,
+              "depth": 0,
+              "parts": [
+                "right"
+              ],
+              "original": "right",
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 23
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28
+                }
+              }
+            },
+            "params": [],
+            "program": {
+              "type": "Program",
+              "body": [
+                {
+                  "type": "ContentStatement",
+                  "original": "right",
+                  "value": "right",
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 30
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 35
+                    }
+                  }
+                }
+              ],
+              "strip": {},
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 30
+                },
+                "end": {
+                  "line": 1,
+                  "column": 35
+                }
+              }
+            },
+            "inverse": {
+              "type": "Program",
+              "body": [
+                {
+                  "type": "ContentStatement",
+                  "original": "middle",
+                  "value": "middle",
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 43
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 49
+                    }
+                  }
+                }
+              ],
+              "strip": {},
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 43
+                },
+                "end": {
+                  "line": 1,
+                  "column": 49
+                }
+              }
+            },
+            "openStrip": {
+              "open": false,
+              "close": false
+            },
+            "inverseStrip": {
+              "open": false,
+              "close": false
+            },
+            "closeStrip": {
+              "open": false,
+              "close": false
+            },
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 16
+              },
+              "end": {
+                "line": 1,
+                "column": 49
+              }
+            }
+          }
+        ],
+        "strip": {},
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 30
+          },
+          "end": {
+            "line": 1,
+            "column": 35
+          }
+        },
+        "chained": true
+      },
+      "openStrip": {
+        "open": false,
+        "close": false
+      },
+      "inverseStrip": {
+        "open": false,
+        "close": false
+      },
+      "closeStrip": {
+        "open": false,
+        "close": false
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 56
+        }
+      }
+    }
+  ],
+  "strip": {},
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 56
+    }
+  }
+}

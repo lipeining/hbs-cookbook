@@ -1,0 +1,118 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "MustacheStatement",
+      "path": {
+        "type": "PathExpression",
+        "data": false,
+        "depth": 0,
+        "parts": [
+          "eq"
+        ],
+        "original": "eq",
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 3
+          },
+          "end": {
+            "line": 1,
+            "column": 5
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "PathExpression",
+          "data": false,
+          "depth": 0,
+          "parts": [
+            "a"
+          ],
+          "original": "a",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 6
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        }
+      ],
+      "hash": {
+        "type": "Hash",
+        "pairs": [
+          {
+            "type": "HashPair",
+            "key": "compare",
+            "value": {
+              "type": "StringLiteral",
+              "value": "a",
+              "original": "a",
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 16
+                },
+                "end": {
+                  "line": 1,
+                  "column": 19
+                }
+              }
+            },
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 8
+              },
+              "end": {
+                "line": 1,
+                "column": 19
+              }
+            }
+          }
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 8
+          },
+          "end": {
+            "line": 1,
+            "column": 19
+          }
+        }
+      },
+      "escaped": true,
+      "strip": {
+        "open": false,
+        "close": false
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 22
+        }
+      }
+    }
+  ],
+  "strip": {},
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 22
+    }
+  }
+}

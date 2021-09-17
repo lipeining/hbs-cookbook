@@ -90,6 +90,8 @@ depth0 是最开始的 context 之后如果有变化的话，会产生
 depth+this.lastConext 名字。
 
 
+opend close 是怎么判断的？怎么知道不匹配？
+
 https://zordius.github.io/HandlebarsCookbook/0027-advancedvariable.html
 
 
