@@ -1,0 +1,278 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "BlockStatement",
+      "path": {
+        "type": "PathExpression",
+        "data": false,
+        "depth": 0,
+        "parts": [
+          "each"
+        ],
+        "original": "each",
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 3
+          },
+          "end": {
+            "line": 1,
+            "column": 7
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "PathExpression",
+          "data": false,
+          "depth": 0,
+          "parts": [
+            "d"
+          ],
+          "original": "d",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "program": {
+        "type": "Program",
+        "body": [
+          {
+            "type": "MustacheStatement",
+            "path": {
+              "type": "PathExpression",
+              "data": false,
+              "depth": 1,
+              "parts": [
+                "a",
+                "b",
+                "c"
+              ],
+              "original": "../a.b.c",
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 15
+                },
+                "end": {
+                  "line": 1,
+                  "column": 23
+                }
+              }
+            },
+            "params": [],
+            "escaped": true,
+            "strip": {
+              "open": false,
+              "close": false
+            },
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 12
+              },
+              "end": {
+                "line": 1,
+                "column": 26
+              }
+            }
+          },
+          {
+            "type": "ContentStatement",
+            "original": " ",
+            "value": " ",
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 26
+              },
+              "end": {
+                "line": 1,
+                "column": 27
+              }
+            }
+          }
+        ],
+        "strip": {},
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 12
+          },
+          "end": {
+            "line": 1,
+            "column": 27
+          }
+        }
+      },
+      "openStrip": {
+        "open": false,
+        "close": false
+      },
+      "closeStrip": {
+        "open": false,
+        "close": false
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ContentStatement",
+      "original": " ",
+      "value": " ",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 36
+        },
+        "end": {
+          "line": 1,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "BlockStatement",
+      "path": {
+        "type": "PathExpression",
+        "data": false,
+        "depth": 0,
+        "parts": [
+          "if"
+        ],
+        "original": "if",
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 40
+          },
+          "end": {
+            "line": 1,
+            "column": 42
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "PathExpression",
+          "data": false,
+          "depth": 0,
+          "parts": [
+            "a"
+          ],
+          "original": "a",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 43
+            },
+            "end": {
+              "line": 1,
+              "column": 44
+            }
+          }
+        }
+      ],
+      "program": {
+        "type": "Program",
+        "body": [
+          {
+            "type": "MustacheStatement",
+            "path": {
+              "type": "PathExpression",
+              "data": false,
+              "depth": 0,
+              "parts": [
+                "a"
+              ],
+              "original": "this.a",
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 49
+                },
+                "end": {
+                  "line": 1,
+                  "column": 55
+                }
+              }
+            },
+            "params": [],
+            "escaped": true,
+            "strip": {
+              "open": false,
+              "close": false
+            },
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 46
+              },
+              "end": {
+                "line": 1,
+                "column": 58
+              }
+            }
+          }
+        ],
+        "strip": {},
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 46
+          },
+          "end": {
+            "line": 1,
+            "column": 58
+          }
+        }
+      },
+      "openStrip": {
+        "open": false,
+        "close": false
+      },
+      "closeStrip": {
+        "open": false,
+        "close": false
+      },
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 37
+        },
+        "end": {
+          "line": 1,
+          "column": 65
+        }
+      }
+    }
+  ],
+  "strip": {},
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 65
+    }
+  }
+}

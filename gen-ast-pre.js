@@ -20,8 +20,13 @@ function safeEval(templateSpec) {
 
 const templates = [
   {
+    name: "lines",
+    input: "{{ first }}  {{ second }} {{ third }} {{#if four}} four{{/if}}",
+    data: {},
+  },
+  {
     name: "parentpath",
-    input: "{{ ../../../a.b.c }}  {{ this.a }}",
+    input: "{{#each d }}{{ ../a.b.c }} {{/each}} {{#if a}}{{ this.a }}{{/if}}",
     data: {},
   },
   {
@@ -54,17 +59,21 @@ const templates = [
   {
     name: "partial",
     input: `{{#*inline "myPartial"}}
-    My Content
+    My Content {{ ../a }}
   {{/inline}}
   {{#each people}}
-    {{> myPartial}}
-  {{/each}}`,
+    {{> myPartial ../a }}
+  {{/each}}
+  outer: {{#with a}} {{> myPartial }}{{/with}}
+  `,
     data: { 
+      a: 'hehehe',
       people: [
         { firstname: "Nils" },
         { firstname: "Yehuda" },
       ],
    },
+   depths: [{a: 'nonono'}],
   },
 ];
 
@@ -73,12 +82,14 @@ const templates = [
 for (const template of templates) {
   const ast = Handlebars.parse(template.input);
   const p = Handlebars.precompile(template.input);
-  //   console.log(p, ast);
+  // console.log(p, ast);
   fs.writeFileSync(path.join(dir, `${template.name}.precompile.js`), `(${p})`);
   fs.writeFileSync(
     path.join(dir, `${template.name}.ast.json`),
     JSON.stringify(ast, null, 2)
   );
   const c = Handlebars.compile(template.input);
-  console.log(template.name, c(template.data));
+  console.log(template.name, c(template.data, { depths: template.depths }));
+  // console.log(Handlebars.print(ast));
 }
+// console.log(Handlebars);

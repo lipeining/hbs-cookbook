@@ -1,6 +1,7 @@
 
 %x mu emu com raw
-
+<!-- 定义排他的 启动符号 popState begin 时使用，
+mu: 普通转义hbs语句，emu 不转义hbs语句， com 注释语句，raw -->
 %{
 
 function strip(start, end) {
@@ -12,7 +13,10 @@ function strip(start, end) {
 LEFT_STRIP    "~"
 RIGHT_STRIP   "~"
 
+<!-- 针对 ID 的分隔符号，比如 a= 的 = 号， a空格 的 空格 符号，a/b/c 的 / 符号 a.b.c 的 . 符号， (a) ) 子表达式符号)  |a| 命名params | -->
 LOOKAHEAD           [=~}\s\/.)|]
+
+<!-- 针对 literal 字符串的分割符号 -->
 LITERAL_LOOKAHEAD   [~}\s)]
 
 /*
@@ -24,10 +28,14 @@ Control characters ranges:
   [\[-\^`]      [, \, ], ^, `,                          Exceptions in range: _
   [\{-~]        {, |, }, ~
 */
+
+<!-- 非 [控制字符]的字符串加上 ID 的 LOOKHEAD 分割符号， +: 至少一个字符 -->
 ID    [^\s!"#%-,\.\/;->@\[-\^`\{-~]+/{LOOKAHEAD}
 
 %%
 
+
+<!-- 非控制符开头的 {{ 字符串，此时定义启动符号 mu emu -->
 [^\x00]*?/("{{")                {
                                    if(yytext.slice(-2) === "\\\\") {
                                      strip(0,1);
@@ -40,7 +48,7 @@ ID    [^\s!"#%-,\.\/;->@\[-\^`\{-~]+/{LOOKAHEAD}
                                    }
                                    if(yytext) return 'CONTENT';
                                  }
-
+<!-- 非控制符，返回 content -->
 [^\x00]+                         return 'CONTENT';
 
 // marks CONTENT up to the next mustache or escaped mustache

@@ -44,19 +44,72 @@
         "body": [
           {
             "type": "ContentStatement",
-            "original": "\n    My Content\n  ",
-            "value": "    My Content\n",
+            "original": "\n    My Content ",
+            "value": "    My Content ",
             "loc": {
               "start": {
                 "line": 1,
                 "column": 24
               },
               "end": {
+                "line": 2,
+                "column": 15
+              }
+            },
+            "rightStripped": true
+          },
+          {
+            "type": "MustacheStatement",
+            "path": {
+              "type": "PathExpression",
+              "data": false,
+              "depth": 1,
+              "parts": [
+                "a"
+              ],
+              "original": "../a",
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 18
+                },
+                "end": {
+                  "line": 2,
+                  "column": 22
+                }
+              }
+            },
+            "params": [],
+            "escaped": true,
+            "strip": {
+              "open": false,
+              "close": false
+            },
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 15
+              },
+              "end": {
+                "line": 2,
+                "column": 25
+              }
+            }
+          },
+          {
+            "type": "ContentStatement",
+            "original": "\n  ",
+            "value": "\n",
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 25
+              },
+              "end": {
                 "line": 3,
                 "column": 2
               }
             },
-            "rightStripped": true,
             "leftStripped": true
           }
         ],
@@ -191,7 +244,27 @@
                 }
               }
             },
-            "params": [],
+            "params": [
+              {
+                "type": "PathExpression",
+                "data": false,
+                "depth": 1,
+                "parts": [
+                  "a"
+                ],
+                "original": "../a",
+                "loc": {
+                  "start": {
+                    "line": 5,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 22
+                  }
+                }
+              }
+            ],
             "indent": "    ",
             "strip": {
               "open": false,
@@ -204,7 +277,7 @@
               },
               "end": {
                 "line": 5,
-                "column": 19
+                "column": 25
               }
             }
           },
@@ -215,7 +288,7 @@
             "loc": {
               "start": {
                 "line": 5,
-                "column": 19
+                "column": 25
               },
               "end": {
                 "line": 6,
@@ -256,6 +329,167 @@
           "column": 11
         }
       }
+    },
+    {
+      "type": "ContentStatement",
+      "original": "\n  outer: ",
+      "value": "  outer: ",
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 11
+        },
+        "end": {
+          "line": 7,
+          "column": 9
+        }
+      },
+      "rightStripped": true
+    },
+    {
+      "type": "BlockStatement",
+      "path": {
+        "type": "PathExpression",
+        "data": false,
+        "depth": 0,
+        "parts": [
+          "with"
+        ],
+        "original": "with",
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 12
+          },
+          "end": {
+            "line": 7,
+            "column": 16
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "PathExpression",
+          "data": false,
+          "depth": 0,
+          "parts": [
+            "a"
+          ],
+          "original": "a",
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 17
+            },
+            "end": {
+              "line": 7,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "program": {
+        "type": "Program",
+        "body": [
+          {
+            "type": "ContentStatement",
+            "original": " ",
+            "value": " ",
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 20
+              },
+              "end": {
+                "line": 7,
+                "column": 21
+              }
+            }
+          },
+          {
+            "type": "PartialStatement",
+            "name": {
+              "type": "PathExpression",
+              "data": false,
+              "depth": 0,
+              "parts": [
+                "myPartial"
+              ],
+              "original": "myPartial",
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 25
+                },
+                "end": {
+                  "line": 7,
+                  "column": 34
+                }
+              }
+            },
+            "params": [],
+            "indent": "",
+            "strip": {
+              "open": false,
+              "close": false
+            },
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 21
+              },
+              "end": {
+                "line": 7,
+                "column": 37
+              }
+            }
+          }
+        ],
+        "strip": {},
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 20
+          },
+          "end": {
+            "line": 7,
+            "column": 37
+          }
+        }
+      },
+      "openStrip": {
+        "open": false,
+        "close": false
+      },
+      "closeStrip": {
+        "open": false,
+        "close": false
+      },
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 9
+        },
+        "end": {
+          "line": 7,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "ContentStatement",
+      "original": "\n  ",
+      "value": "\n  ",
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 46
+        },
+        "end": {
+          "line": 8,
+          "column": 2
+        }
+      }
     }
   ],
   "strip": {},
@@ -265,8 +499,8 @@
       "column": 0
     },
     "end": {
-      "line": 6,
-      "column": 11
+      "line": 8,
+      "column": 2
     }
   }
 }
