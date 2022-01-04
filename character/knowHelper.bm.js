@@ -11,24 +11,24 @@ const knownHelpers = { eq: true };
 const list = [];
 for (let i = 1; i <= 10000; i *= 10) {
   const exp = eqExp.repeat(i);
-  const unkonwLen = Handlebars.precompile(exp).length;
-  const konwLen = Handlebars.precompile(exp, { knownHelpers }).length;
-  console.log("unkonw", unkonwLen);
-  console.log("konw", konwLen);
+  const unknowLen = Handlebars.precompile(exp).length;
+  const knowLen = Handlebars.precompile(exp, { knownHelpers }).length;
+  console.log("unknow", unknowLen);
+  console.log("know", knowLen);
   list.push({ exp, i });
 }
 
-// unkonw 804
-// konw 730
-// unkonw 3563
-// konw 3015
-// unkonw 31028
-// konw 25890
-// unkonw 307475
-// konw 256437
-// unkonw 3089952
-// konw 2579914
-// 执行时间没有大的差距
+// unknow 804
+// know 730
+// unknow 3563
+// know 3015
+// unknow 31028
+// know 25890
+// unknow 307475
+// know 256437
+// unknow 3089952
+// know 2579914
+// 提前编译好，测试执行时间，执行时间没有大的差距
 // eqUnknow-1     x  9,804 ops/sec ±17.15% (68 runs sampled)
 // eqKnow-1       x 13,840 ops/sec ±2.11% (78 runs sampled)
 // eqUnknow-10    x 10,613 ops/sec ±4.50% (72 runs sampled)

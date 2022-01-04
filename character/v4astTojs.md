@@ -75,6 +75,22 @@
 
 ```
 
+```java
+interface PathExpression <: Expression {
+    type: "PathExpression";
+    data: boolean;
+    depth: uint >= 0;
+    parts: [ string ];
+    original: string;
+}
+```
+
+- `data` is true when the given expression is a `@data` reference.
+- `depth` is an integer representation of which context the expression references. `0` represents the current context, `1` would be `../`, etc.
+- `parts` is an array of the names in the path. `foo.bar` would be `['foo', 'bar']`. Scope references, `.`, `..`, and `this` should be omitted from this array.
+- `original` is the path as entered by the user. Separator and scope references are left untouched.
+
+
 ## compiler
 ```ts
 interface compiler {
@@ -90,3 +106,45 @@ interface compiler {
 
 
 ## js compiler
+
+```ts
+interface JScompiler {
+  environment: environment;
+  options: options;
+  stringParams: boolean;
+  trackIds: boolean;
+  precompile: boolean;
+  name: string;
+  // 是否有上下文, 每一个
+  context: {
+    programs: any[];
+    environments: any[];
+    aliases: {};
+  };
+  // 是否是子 program
+  isChild: boolean;
+  // stack1, stack2 的计数器
+  stackSlot: number;
+  // 记录 stack1, stack2, hash 的实例，数据来自 registers.list
+  stackVars: any[];
+  // 用于定义变量，之后可以统一在代码开头定义。包括 stack1, hash, hashContext, options 等
+  registers: {
+    list: any[];
+  };
+  hashes:  { values: {}, types: [], contexts: [], ids: [] }[];
+  blockParams: any[];
+  // 保存 stack1, stack2 的名字，或者已经处理好的字符串代码
+  compileStack: any[];
+  // 逻辑上，保存当前【代码块】的栈，指一行的 {{}} hbs 代码的相关对象。
+  // 可能是 Literal 对象，也可能是纯字符串
+  inlineStack: any[];
+  // opcodes 执行的位置
+  i: number;
+
+  // 当前上下文的的名字，有层级关系时，会不断 ++
+  // {{ ../../../a }}
+  lastContext: number;
+  // 可以随时连接的 js 代码， source[1] 需要注册定义的变量名
+  source: string[];
+}
+```

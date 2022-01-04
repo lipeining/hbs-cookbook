@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "@yy/sl-egg-handlebars": "0.0.49-alpha.3",
+    "api-benchmark": "^1.0.1",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.4",
+    "dotenv": "^10.0.0",
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.10.0",
-    "jison": "^0.4.18"
+    "jison": "^0.4.18",
+    "koa": "^2.13.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {},
   "scripts": {
