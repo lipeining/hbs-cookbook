@@ -4,3 +4,5 @@ bench/expect
 themes/expect
 *.log
 *.0x
+*.env
+.clinic

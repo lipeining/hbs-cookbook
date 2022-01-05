@@ -4,7 +4,7 @@ const handlebars = require("./handlbars");
 const files = require("./expect/files.json");
 const assets = require("./expect/assets.json");
 const locale = require("./expect/locale.json");
-const context = require("./expect/data.json");
+// const context = require("./expect/data.json");
 const config = require("./config");
 const { IRender } = config;
 
@@ -13,6 +13,7 @@ function loadTemplate(file) {
 }
 
 function loadTemplates(files) {
+  const context = require("./expect/data.json");
   console.time("loadTemplates");
   const paths = Object.keys(files);
 
@@ -23,9 +24,10 @@ function loadTemplates(files) {
   }
   context[IRender.ASSETS] = assets;
   console.timeEnd("loadTemplates");
+  return context;
 }
 
-function renderTemplate() {
+function renderTemplate(context) {
   console.time("renderTemplate");
   const path = "templates/products/detail.html";
   // const path = "snippets/product/detail/product-preview.html";
@@ -38,30 +40,43 @@ function renderTemplate() {
 }
 
 async function render(files, ctx) {
-  loadTemplates(files);
-  if ((ctx.query.profile = true)) {
+  const context = loadTemplates(files);
+  if (ctx.query.profile === "true") {
     return await handlebars.profiler.run({}, () => {
-      const span = handlebars.profiler.startSpan('tetsetsts');
+      const span = handlebars.profiler.startSpan("tetsetsts");
 
-      const result = renderTemplate();
+      const result = renderTemplate(context);
       span?.end();
 
-      return result;
+      // return result;
+      return handlebars.profiler.getData() || {};
     });
   }
-  return renderTemplate();
+  return renderTemplate(context);
 }
 
 const Koa = require("koa");
 const app = new Koa();
 
+// 当 loadTemplates 在这里加载时，除了第一个之外，其余的整体的时间会很快
+// 到 20-50 ms 之间，不过具体函数耗时时不确定的，
+// 猜测为内存缓存的原因。应该不具备参考价值。
+// loadTemplates(files);
+
 // response
 app.use(async (ctx) => {
+  if (ctx.path !== "/") {
+    return;
+  }
   ctx.status = 200;
   ctx.body = await render(files, ctx);
 });
 
 app.listen(3000);
+
+
+
+
 
 // 需要拿之前的各种语言的性能跑分代码，检查一下。
 
@@ -70,12 +85,39 @@ app.listen(3000);
 // clinic flame --autocannon [ -m GET / ] -- node render.js
 // clinic flame -- node render.js
 // clinic flame --autocannon /  -- node render.js
+// 可以看到第一个耗时较大，其余耗时逐步减少。
+// lipeining@lipeiningdeMacBook-Pro themes % clinic flame --autocannon /  -- node render.js
+// handlebars helpers length: 320
+// Running 10s test @ http://localhost:3000/
+// 10 connections
+
+// running [                    ] 0%loadTemplates: 0.746ms
+// isPreviewProduct ==== undefined
+// isPreviewProduct ==== false
+// html 124192
+// renderTemplate: 495.867ms
+// loadTemplates: 0.192ms
+// isPreviewProduct ==== undefined
+// isPreviewProduct ==== false
+// html 124192
+// renderTemplate: 285.484ms
+// loadTemplates: 0.221ms
+// isPreviewProduct ==== undefined
+// isPreviewProduct ==== false
+// html 124192
+// renderTemplate: 181.893ms
+// loadTemplates: 0.174ms
+// running [==                  ] 10%isPreviewProduct ==== undefined
+// isPreviewProduct ==== false
+// html 124192
+// renderTemplate: 154.144ms
+
+
 // clinic flame --autocannon [ -m GET /?profile=true ] -- node render.js
 
 // 通过 console.time 得到 snippet 耗时时间大头
 // 0x -o render.js
 // 0x -P 'autocannon localhost:3000' render.js
-
 
 // *compile D:\github-project\hbs-cookbook\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:73:28
 // Top of Stack: 1% (6 of 620 samples)
@@ -90,7 +132,7 @@ app.listen(3000);
 // ~unput D:\github-project\hbs-cookbook\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:429:34
 // Top of Stack: 1.6% (10 of 620 samples)
 // On Stack: 1.6% (10 of 620 samples)
-// next: function next() 
+// next: function next()
 
 // *wrap D:\github-project\hbs-cookbook\node_modules\handlebars\dist\cjs\handlebars\compiler\code-gen.js:101:22
 // Top of Stack: 0.4% (23 of 5435 samples)
@@ -148,14 +190,11 @@ app.listen(3000);
  * product/commons/sku-trade/flatten
  */
 
-
-
 // store 里面的计算 node 节点耗时
 //  node(): 0.009ms
 //  node(): 0.01ms
 //  node(): 0.009ms
 //  node(): 0.013ms
-
 
 // handlebars 生成 template 实例耗时。
 // console.timeEnd("start template");
