@@ -4,7 +4,7 @@ const Handlebars = require("@yy/sl-egg-handlebars/lib/handlebars");
 const { Profiler } = require("@yy/sl-egg-handlebars/lib/handlebars/profiler");
 const currencyUtils = require("@yy/sl-egg-handlebars/lib/utils/currency");
 const metafieldsUtils = require("@yy/sl-egg-handlebars/lib/utils/metafields");
-
+require("dotenv").config();
 const config = require("./config");
 
 Handlebars.initOptions(
