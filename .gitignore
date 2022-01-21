@@ -6,3 +6,4 @@ themes/expect
 *.0x
 *.env
 .clinic
+*source
