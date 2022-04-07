@@ -1,6 +1,9 @@
-const { render } = require('./render');
+const { render, cachePrecompileFiles } = require('./render');
 const Koa = require("koa");
 const app = new Koa();
+const lru = require('lru-cache');
+app.cache = new lru({ max: 20000 });
+cachePrecompileFiles(app.cache);
 
 // 当 loadTemplates 在这里加载时，除了第一个之外，其余的整体的时间会很快
 // 到 20-50 ms 之间，不过具体函数耗时时不确定的，
@@ -58,6 +61,7 @@ app.listen(3000);
 
 
 // clinic flame --autocannon [ -m GET /?profile=true ] -- node app.js
+// clinic flame --autocannon [ -m GET /?precompile=true ] -- node app.js
 
 // 通过 console.time 得到 snippet 耗时时间大头
 // 0x -o render.js

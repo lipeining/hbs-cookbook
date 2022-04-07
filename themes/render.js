@@ -52,6 +52,11 @@ function loadPreTemplates(cache) {
   return context;
 }
 
+function renderPreTemplate(cache) {
+  const context = loadPreTemplates(cache);
+  return renderTemplate(context);
+}
+
 function cacheShareTemplates(cache) {
   console.time("cacheShareTemplates");
   const paths = Object.keys(files);
@@ -109,6 +114,9 @@ function renderTemplate(context) {
 }
 
 async function render(ctx) {
+  if (ctx?.query?.precompile === "true") {
+    return renderPreTemplate(ctx.app.cache);
+  }
   const context = loadTemplates(files);
   if (ctx?.query?.profile === "true") {
     return await handlebars.profiler.run({}, () => {
